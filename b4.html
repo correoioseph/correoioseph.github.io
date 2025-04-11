@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verificación de Usuario</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff; /* Fondo blanco para toda la página */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      position: relative; /* Para posicionar las imágenes laterales */
+    }
+
+    /* Encabezado principal */
+    .header-text {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 3; /* Encima de otros elementos */
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 3rem; /* Tamaño grande */
+      color: #28a745; /* Verde inicial */
+      transition: color 0.3s ease, transform 0.3s ease; /* Efecto suave */
+    }
+
+    .header-text h1:hover {
+      color: #007bff; /* Cambio de color al pasar el mouse */
+      transform: scale(1.1); /* Agrandamiento */
+    }
+
+    .header-text h2 {
+      margin: 0;
+      font-size: 2rem; /* Tamaño grande */
+      color: #28a745; /* Verde inicial */
+      transition: color 0.3s ease, transform 0.3s ease; /* Efecto suave */
+    }
+
+    .header-text h2:hover {
+      color: #007bff; /* Cambio de color al pasar el mouse */
+      transform: scale(1.1); /* Agrandamiento */
+    }
+
+    /* Contenedor principal */
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 2rem;
+      background: #fff; /* Fondo blanco */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center; /* Centra todo el contenido */
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      max-height: 300px; /* Aumentado el tamaño del área */
+      overflow-y: auto;
+      background: #fff; /* Fondo blanco */
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    /* Encabezado con imágenes */
+    .header-images {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 1rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2; /* Encima del contenido principal */
+    }
+
+    .header-images img {
+      width: 175px; /* Tamaño de las imágenes */
+      height: auto; /* Mantener proporción */
+      margin: 0 1.5rem; /* Acercar las imágenes lateralmente (5 cm aproximadamente) */
+    }
+
+    /* Contenedor de logos y enlaces */
+    .links-container {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: flex-start; /* Alineación al inicio */
+      gap: 1rem; /* Espacio reducido entre los logos */
+      overflow-x: auto; /* Desplazamiento horizontal si es necesario */
+      white-space: nowrap; /* Evitar que los logos se muevan a la siguiente línea */
+    }
+
+    .links-container img {
+      width: 80px; /* Tamaño reducido de los logos */
+      height: 80px; /* Mantener proporción */
+      transition: transform 0.3s ease; /* Suaviza la transición */
+    }
+
+    .links-container img:hover {
+      transform: scale(1.2) rotate(15deg); /* Agrandar y rotar al pasar el mouse */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado animado -->
+  <div class="header-text">
+    <h1>COLEGIO IOSEPH</h1>
+    <h2>Misioneros josefinos</h2>
+  </div>
+
+  <!-- Encabezado con imágenes -->
+  <div class="header-images">
+    <img src="C:\Users\Computo Bto\Desktop\CORREO\logo.png" alt="Logo Izquierda">
+    <img src="C:\Users\Computo Bto\Desktop\CORREO\aguila.png" alt="Logo Derecha">
+  </div>
+
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Menú desplegable -->
+    <label for="nombreSelect">Seleccioná tu nombre:</label>
+    <select id="nombreSelect" size="15" onchange="mostrarCorreo()">
+      <!-- Opciones se cargarán dinámicamente -->
+    </select>
+
+    <!-- Campo de correo automático -->
+    <label for="correoInput">Correo asignado:</label>
+    <input type="text" id="correoInput" readonly />
+
+    <!-- Contenedor de logos y enlaces -->
+    <div class="links-container">
+      <!-- Santillana -->
+      <a href="https://edi.santillana.com.sv" target="_blank" title="Santillana">
+        <img src="C:\Users\Computo Bto\Desktop\CORREO\SANTILLANA.PNG" alt="Logo Santillana" />
+      </a>
+
+      <!-- Tinkercad -->
+      <a href="https://www.tinkercad.com" target="_blank" title="Tinkercad">
+        <img src="C:\Users\Computo Bto\Desktop\CORREO\TINKER.PNG" alt="Logo Tinkercad" />
+      </a>
+
+      <!-- Notas Ioseph -->
+      <a href="https://ioseph.notassv.com/estudiantes/" target="_blank" title="Notas Ioseph">
+        <img src="C:\Users\Computo Bto\Desktop\CORREO\logo.png" alt="logo" />
+      </a>
+
+      <!-- Richmond -->
+      <a href="https://richmondlp.com" target="_blank" title="Richmond">
+        <img src="C:\Users\Computo Bto\Desktop\CORREO\RICHMOND.PNG" alt="Logo Richmond" />
+      </a>
+
+      <!-- Google -->
+      <a href="https://www.google.com" target="_blank" title="Google">
+        <img src="C:\Users\Computo Bto\Desktop\CORREO\GOOGLE.PNG" alt="Logo Google" />
+      </a>
+
+      <!-- Codimaker -->
+      <a href="https://app.codimaker.com" target="_blank" title="Codimaker">
+        <img src="C:\Users\Computo Bto\Desktop\CORREO\CODI.PNG" alt="Logo Codimaker" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Base de datos de alumnos y profesores
+    const datos = `
+COLEGIO IOSEPH	sv.ioseph-s.1
+ABARCA ALVAREZ, ANGEL GERARDO	abarcaangel@colegioioseph.edu.sv
+ABARCA RODRIGUEZ, GIANFRANCO	abarcagianfranco@colegioioseph.edu.sv
+ABREGO MANCIA, LEVI MATHEW	abregolevi@colegioioseph.edu.sv
+ACEVEDO ESCAMILLA, DIEGO ARMANDO	acevedodiego@colegioioseph.edu.sv
+ACOSTA RAMOS, JAIRO ADONAY	acostajairo@colegioioseph.edu.sv
+AGUILAR, CLAUDIA	claudia.aguilar@colegioioseph.edu.sv
+AGUILAR ALVARENGA, KEIRY YAMILETH	aguilarkeiry@colegioioseph.edu.sv
+ALFARO ALAS, VALERIA ALEXANDRA	alfarovaleria@colegioioseph.edu.sv
+ALFARO SARAVIA, DEREK VALENTINO	alfaroderek@colegioioseph.edu.sv
+ALVARADO CAMPOS, EDUARDO FRANCO	alvaradoeduardo@colegioioseph.edu.sv
+ALVARADO GONZALEZ, CAMILO ADRIAN	alvaradocamilo@colegioioseph.edu.sv
+AMAYA ARRIOLA, CARLOS ALBERTO	carlosamaya@colegioioseph.edu.sv
+AMAYA COTO, BRYAN ALEXANDER	amayabryan@colegioioseph.edu.sv
+AMAYA MARTÍNEZ, GABRIEL ALEXANDER	amayagabriel@colegioioseph.edu.sv
+APARICIO GARCIAGUIRRE, JOSE RENE	apariciojose@colegioioseph.edu.sv
+ARAUJO MARTINEZ, DARLIN ANDREA	araujodarlin@colegioioseph.edu.sv
+ARCE MARTÍNEZ, GABRIELA ALEJANDRA	arcegabriela@colegioioseph.edu.sv
+AREVALO MORALES, FRANCISCO JOSÉ	arevalofrancisco@colegioioseph.edu.sv
+AREVALO PEREZ, ARTURO ALEJANDRO	arevaloarturo@colegioioseph.edu.sv
+ARIAS RAMIREZ, VALERIA ELENA	ariaselena@colegioioseph.edu.sv
+ARIAS RAMOS, DANIELA MICHELLE	ariasdaniela@colegioioseph.edu.sv
+ARTIGA PADILLA, KIMBERLY SAMANTHA	artigakimberly@colegioioseph.edu.sv
+ARTIGA PINEDA, IVANIA VALENTINA	artigaivania@colegioioseph.edu.sv
+ASCENCIO BONILLA, RICARDO DAVID	asencioricardo@colegioioseph.edu.sv
+AVANZO2, PRUEBA	prueba.avanzo.2
+AVELAR VASQUEZ, ALEXA ISABEL	avelaralexa@colegioioseph.edu.sv
+AYALA MIRANDA, PEDRO DANIEL	ayalapedro@colegioioseph.edu.sv
+BATRES ARAUJO, ANGEL JOSUE	batresangel@colegioioseph.edu.sv
+BATRES AYALA, KEIRY JIMENA	batreskeiry@colegioioseph.edu.sv
+BATRES SANCHEZ, LUIS FELIPE	batresluis@colegioioseph.edu.sv
+BELTRÁN LEIVA, KEVIN ALEJANDRO	beltrankevin@colegioioseph.edu.sv
+BRAVO JUAREZ, LUCAS ENRIQUE	bravolucas@colegioioseph.edu.sv
+CABALLERO CRUZ, SAMANTHA GISELLE	caballerosamantha@colegioioseph.edu.sv
+CALDERON BOGRAN, FATIMA XIMENA	calderonximena@colegioioseph.edu.sv
+CALLEJAS ROSALES, DIEGO VLADIMIR	diegovladimir.callejas.0
+CALLEJAS ROSALES, HENRY ANDRES	callejasandres@colegioioseph.edu.sv
+CALLES MARTINEZ, DANIELA FERNANDA	callesfernanda@colegioioseph.edu.sv
+CAMPOS IRAHETA, SAMUEL ADEMIR	campossamuel@colegioioseph.edu.sv
+CAMPOS PAREDES, KENIA PATRICIA	camposkenia@colegioioseph.edu.sv
+CAMPOS PEREZ, MELISSA GABRIELA	camposmelissa@colegioioseph.edu.sv
+CAMPOS SANCHEZ, KENNETH EDUARDO	camposeduardo@colegioioseph.edu.sv
+CANALES GUSTAVO, MAURICIO	canales@colegioioseph.edu.sv
+CARABANTES ERAZO, MARCOS GABRIEL	carabantesgabriel@colegioioseph.edu.sv
+CARCAMO RAMIREZ, ISABELLA MICHELLE	carcamomichelle@colegioioseph.edu.sv
+CASTILLO JOYA, DOMINIC ALEJANDRO	castillodominic@colegioioseph.edu.sv
+CASTRO ALFARO, CARLOS ROBERTO	alfarocarlos@colegioioseph.edu.sv
+CASTRO FLORES, ESTEBAN ANTONIO	castroantonio@colegioioseph.edu.sv
+CASTRO MORENO, SOFIA ALEJANDRA	castrosofia@colegioioseph.edu.sv
+CATIVO GUEVARA, CARLOS JOSUE	cativojosue@colegioioseph.edu.sv
+CERNA PORTILLO, RICARDO ANTONIO	ricardocerna@colegioioseph.edu.sv
+CERON GARCIA, LORENA NOHEMY	ceronlorena@colegioioseph.edu.sv
+CERRITOS HERNANDEZ, GLORIA NICOLLE	cerritosgloria@colegioioseph.edu.sv
+CEVALLOS LOPEZ, TATIANA MICHELLE	cevallostatiana@colegioioseph.edu.sv
+CHACON HERNANDEZ, DIEGO ALEJANDRO	chacondiego@colegioioseph.edu.sv
+CHAVEZ CORDOBA, ASHLEY NICOLE	chavezashley@colegioioseph.edu.sv
+CHAVEZ GARCIA, PAMELA NICOLLE	chavezpamela@colegioioseph.edu.sv
+CHAVEZ LOPEZ, ONEYSI ROCHELLE	chavezrochelle@colegioioseph.edu.sv
+CHAVEZ ZELAYA, LUDWIN ALEXANDER	chavezludwin@colegioioseph.edu.sv
+CHINCHILLA RIVAS, SOFIA	chinchilla@colegioioseph.edu.sv
+CORDOVA MELENDEZ, NATHALY CAMILA	cordovacamila@colegioioseph.edu.sv
+CORNEJO MANZANO, MIRANDA CITLALI	cornejocitlali@colegioioseph.edu.sv
+CORNEJO MARROQUIN, DANIEL ENRIQUE	cornejodaniel@colegioioseph.edu.sv
+CORTEZ CARRILLO, HAZEL BEATRIZ	cortezbeatriz@colegioioseph.edu.sv
+CORTEZ MENDEZ, ALEJANDRO DANIEL	cortezdaniel@colegioioseph.edu.sv
+CRUZ RUANO, ARIANNA SOPHIA	cruzarianna@colegioioseph.edu.sv
+CUBIAS ARROYO, ROCIO ABIGAIL	cubiasrocio@colegioioseph.edu.sv
+DE PAZ REYES, ARIADNA VALERIA	depazariadna@colegioioseph.edu.sv
+DEMO, DOCENTE IOSEPH	docente.demoioseph
+DIAZ ESPINOZA, SANTIAGO JOSE	diazjose@colegioioseph.edu.sv
+DIAZ GARCIA, KARLA DAYANARA	diazkarla@colegioioseph.edu.sv
+DIAZ HUEZO, ADRIANA YARELIE	diazadriana@colegioioseph.edu.sv
+DIAZ ROSALES, GENESIS SARAI	diazgenesis@colegioioseph.edu.sv
+DOMINGUEZ ARGUETA, FATIMA NICOLLE	dominguezfatima@colegioioseph.edu.sv
+EGUIZABAL RIVAS, CAMILA FERNANDA	eguizabalfernanda@colegioioseph.edu.sv
+ELIAS HERNANDEZ, NATHALY NAOMI	eliasnathaly@colegioioseph.edu.sv
+ESCAMILLA BLANCO, GISELA NICOLLE	escamillagisela@colegioioseph.edu.sv
+ESPECIALISTA DIGITAL, SANTILLANA COMPARTIR	SV.IOSEPH-SC
+FERNANDEZ ALFARO, BRANDON ALEJANDRO	fernandezbrandon@colegioioseph.edu.sv
+FERNANDEZ CEA, MATIAS ALEJANDRO	fernandezmatias@colegioioseph.edu.sv
+FERNANDEZ CRUZ, JIMMY OSVALDO	fernandezosvaldo@colegioioseph.edu.sv
+FERNANDEZ CRUZ, VALERIA JUDITH	fernandezjudith@colegioioseph.edu.sv
+FERNANDEZ INTERIANO, ANDREA XIMENA	fernandezandrea@colegioioseph.edu.sv
+FERNANDEZ RAYMUNDO, NELSON DANIEL	fernandeznelson@colegioioseph.edu.sv
+FLORES ANTONIO, ANGEL SALVADOR	floresangel@colegioioseph.edu.sv
+FLORES CEDILLOS, JOSUE ENRIQUE	floresjosue@colegioioseph.edu.sv
+FLORES CEDILLOS, LEIDY ISABELLA	floresleidy@colegioioseph.edu.sv
+FLORES CERROS, DELMY ARLETTE	arletteflores@colegioioseph.edu.sv
+FLORES MARTINEZ, AMY SUGEY	floresamy@colegioioseph.edu.sv
+FLORES ORELLANA, DAVID ENRIQUE	davidenrique.flores.0
+FLORES PEREZ, MAYERLIN NICOLE	floresmayerlin@colegioioseph.edu.sv
+FLORES RAMIREZ, JAZLYN SCARLETH	floresjazlyn@colegioioseph.edu.sv
+FRANCO CAMPOS, LOURDES YARETZI	francolourdes@colegioioseph.edu.sv
+FUENTES ADRIANA, SOFIA	fuentessofia@colegioioseph.edu.sv
+FUENTES BERDUGO, NANCY MARICELA	nancyfuentes@colegioioseph.edu.sv
+FUENTES SOLANO, PATRICIA MICHELLE	fuentesmichelle@colegioioseph.edu.sv
+GAMEZ CUBIAS, MAINOR ALEXANDER	gamezmainor@colegioioseph.edu.sv
+GAMEZ DURAN, HAYDLIN DANIELA	gamezhaydlin@colegioioseph.edu.sv
+GARCIA ALVARADO, MATIAS ISAEL	garciaisael@colegioioseph.edu.sv
+GARCIA MARTINEZ, MARIA ESTHER	garciaesther@colegioioseph.edu.sv
+GARCIA RODAS, FRANCISCO ALEXANDER	garciafrancisco@colegioioseph.edu.sv
+GIRON VILLALTA, RIGOBERTO ANDRES	gironandres@colegioioseph.edu.sv
+GODOY GIL, RODRIGO JOSE	godoyjose@colegioioseph.edu.sv
+GOMEZ, OSCAR ALFONSO	oscaralfonso.gomez@colegioioseph.edu.sv
+GOMEZ GARCÍA, CHRISTOPHER EDUARDO	gomezchristopher@colegioioseph.edu.sv
+GONZALEZ CORTEZ, ALEXANDRA ASTRID	gonzalezastrid@colegioioseph.edu.sv
+GONZALEZ GOMEZ, ANGELLY NICOLE	gonzalezangelly@colegioioseph.edu.sv
+GONZALEZ MEDRANO, ALBA MARGARITA	medranoalba@colegioioseph.edu.sv
+GRANADOS ESCOBAR, AMY NICOLE	granadosamy@colegioioseph.edu.sv
+GUARDADO LOPEZ, JOSE MATEO	guardadomateo@colegioioseph.edu.sv
+GUERRA MEJIA, ISABEL ALEJANDRA	guerraalejandra@colegioioseph.edu.sv
+GUEVARA CASTRO, EDWARD MARDOQUEO	guevaraedward@colegioioseph.edu.sv
+GUEVARA GUADRON, ALEXANDER JOSUE	guevaraalexander@colegioioseph.edu.sv
+GUEVARA ROJAS, ADRIANA ISABELLA	guevaraisabella@colegioioseph.edu.sv
+GUILLEN ZELAYA, FERNANDO JAVIER	guillenfernando@colegioioseph.edu.sv
+GUZMAN ZELAYA, AXEL ERNESTO	zelayaernesto@colegioioseph.edu.sv
+HERNANDEZ, OSCAR ALFONSO	hernandezoscar@colegioioseph.edu.sv
+HERNÁNDEZ, STEFFANY	steffany.vasquez
+HERNANDEZ ALFARO, MARCOS ALEXANDER	hernandezmarcos@colegioioseph.edu.sv
+HERNANDEZ BARRAZA, DANIELA ALEXIA	hernandezdaniela@colegioioseph.edu.sv
+HERNANDEZ CHAVEZ, LINCY DAYANA	hernandezlincy@colegioioseph.edu.sv
+HERNANDEZ CHAVEZ, NELSON GERARDO	hernandeznelson@colegioioseph.edu.sv
+HERNANDEZ ORTIZ, EVER ALEXANDER	hernandezalexander@colegioioseph.edu.sv
+HERNANDEZ PORTILLO, SARA MICHELLE	hernandezsara@colegioioseph.edu.sv
+HERNANDEZ RUBIO, CHRISTOPHER ALEXANDER	hernandezchristopher@colegioioseph.edu.sv
+HERNANDEZ SOLORZANO, ARIANA PAMELA	hernandezpamela@colegioioseph.edu.sv
+HERNÁNDEZ VÁSQUEZ, REBECA STEFFANY	steffany.hernandez@colegioioseph.edu.sv
+IOSEPH, COLEGIO	SV.IOSEPH-S
+IOSEPH, COLEGIO	SV.IOSEPH-P
+JACINTO VENTURA, JENNIFER ARELY	jacintojenifer@colegioioseph.edu.sv
+JIMENEZ GUARDADO, MATEO ANDRES	jimenezmateo@colegioioseph.edu.sv
+JIMENEZ LUNA, KEVIN STEVE	jimenezkevin@colegioioseph.edu.sv
+JOVEL CAMPOS, JOHANN DANIEL	joveljohann@colegioioseph.edu.sv
+JOVEL RIVERA, GENESIS MERCEDES	jovelgenesis@colegioioseph.edu.sv
+JUAREZ SEGOVIA, FATIMA MARCELA	juarezfatima@colegioioseph.edu.sv
+LARA QUIJANO, KEIRY YESENIA	larakeiry@colegioioseph.edu.sv
+LIDER COMPARTIR, DIRECTOR	director.ioseph
+LIZANO CORTEZ, BRITTANY AINARA	lizanobrittany@colegioioseph.edu.sv
+LOPEZ ALFARO, JORGE LUIS	lopezjorge@colegioioseph.edu.sv
+LOPEZ GARCIA, FLORENCE GABRIELA	lopezflorence@colegioioseph.edu.sv
+LOPEZ GUEVARA, MARIA JOSE	lopezjose@colegioioseph.edu.sv
+LOPEZ MARTINEZ, MARCELO SEBASTIAN	lopezsebastian@colegioioseph.edu.sv
+LOPEZ RAMIREZ, ASAEL ENRIQUE	lopezasael@colegioioseph.edu.sv
+LOPEZ RAMOS, DAYANA GISELLE	lopezdayana@colegioioseph.edu.sv
+LOPEZ SALAMANCA, STEVEN ALEXANDER	lopezalexander@colegioioseph.edu.sv
+MACHUCA AMAYA, FRIDA CECILIA	machucacecilia@colegioioseph.edu.sv
+MAGANA GARCIA, KATHERINE COLETTE	maganacolette@colegioioseph.edu.sv
+MARIN, CRISTIAN	cristianmarin@colegioioseph.edu.sv
+MARROQUÍN LARREINAGA, MARINA DEL CARMEN	marinamarroquin@colegioioseph.edu.sv
+MARTINEZ BONDANZA, XAVIER ALESSANDRO	martinezxavier@colegioioseph.edu.sv
+MARTINEZ CHAVEZ, JULIO ALEXANDER	martinezjulio@colegioioseph.edu.sv
+MARTINEZ DELGADO, ESLI DESIREE	martinezdesiree@colegioioseph.edu.sv
+MARTINEZ GALINDO, ANGEL DAVID	martinezdavid@colegioioseph.edu.sv
+MARTINEZ MALDONADO, CARLOS ELIAS	martinezcarlos@colegioioseph.edu.sv
+MARTINEZ MALDONADO, JOSELYN ISABEL	martinezisabel@colegioioseph.edu.sv
+MARTINEZ RAMOS, JENNIFER GUADALUPE	martinezguadalupe@colegioioseph.edu.sv
+MARTINEZ ROMERO, GENESIS NICOLLE	martineznicolle@colegioioseph.edu.sv
+MARTINEZ SERMENO, MATIAS SANTIAGO	martinezsantiago@colegioioseph.edu.sv
+MARTINEZ VASQUEZ, EVELIN NOHEMI	martinezevelin@colegioioseph.edu.sv
+MEJIA ARGUETA, ALISSON NICOLLE	mejiaalisson@colegioioseph.edu.sv
+MELENDEZ ESPINOZA, RONY MATEO	melendezrony@colegioioseph.edu.sv
+MELENDEZ GARCIAGUIRRE, LUZ MARIANA	melendezluz@colegioioseph.edu.sv
+MELENDEZ VASQUEZ, AMY DENISE	melendezdenise@colegioioseph.edu.sv
+MELGAR CHAVEZ, LISBETH SARAI	melgarlisbeth@colegioioseph.edu.sv
+MENA ROSALES, JUAN DAVID	menajuan@colegioioseph.edu.sv
+MENDEZ CAMPOS, DANIELA STEFFANY	mendezsteffany@colegioioseph.edu.sv
+MENDEZ HERNANDEZ, DHARIANA AILY	mendezdhariana@colegioioseph.edu.sv
+MENDEZ PEREZ, FATIMA ALEJANDRA	mendezfatima@colegioioseph.edu.sv
+MENDOZA LOPEZ, GIANCARLO DE JESUS	mendozade@colegioioseph.edu.sv
+MENDOZA RIVERA, GENESIS VALERIA	mendozavaleria@colegioioseph.edu.sv
+MENJIVAR SHUTTIN, NATHALIA ABIGAIL	menjivarnathalia@colegioioseph.edu.sv
+MERCADO ALFARO, CHELSY JASSETTE	mercadochelsy@colegioioseph.edu.sv
+MIRA CHICAS, GRACIA JEREMAY	miragracia@colegioioseph.edu.sv
+MIRANA DUBON, JONATHAN ARMANDO	mirandajonathan@colegioioseph.edu.sv
+MOJICA GARCIA, CARLOS STEVEN	mojicacarlos@colegioioseph.edu.sv
+MOLINA, SILVIA BEATRIZ	molinasilvia@colegioioseph.edu.sv
+MONCHEZ ARGUETA, BRANDON ERNESTO	monchezbrandon@colegioioseph.edu.sv
+MONGE ESTRADA, DIEGO ISAAC	mongediego@colegioioseph.edu.sv
+MONTESINO CORTEZ, LYA VALENTINA	montesinolya@colegioioseph.edu.sv
+MONTESINO CORTEZ, MARLENE MONTSERRAT	montesinomarlene@colegioioseph.edu.sv
+MORALES AVELAR, JOSSELYNE DANIELA	avelarjosselyne@colegioioseph.edu.sv
+MORALES GUEVARA, ROBERTO MATEO	moralesmateo@colegioioseph.edu.sv
+MORALES RIVERA, NAHOMY ESMERALDA	moralesesmeralda@colegioioseph.edu.sv
+MORAN GARCIA, SANTIAGO JAFET	moranjafet@colegioioseph.edu.sv
+MORÁN LANDAVERDE, DAVID ALEXANDER	morandavid@colegioioseph.edu.sv
+NAVARRETE DE VALENCIA, CECILIA DE LOS ANGELES	valenciacecilia@colegioioseph.edu.sv
+NAVARRO ARAUJO, MELVIN FERNANDO	navarromelvin@colegioioseph.edu.sv
+NAVARRO FUNES, EMMANUEL ALEJANDRO	navarroemmanuel@colegioioseph.edu.sv
+NUILA HENRIQUEZ, HENRY ZAIR	nuilahenry@colegioioseph.edu.sv
+OLMEDO HERNANDEZ, PATRICIA ABIGAIL	patriciaolmedo@colegioioseph.edu.sv
+ORELLANA, RAFAEL	raffaorellana@colegioioseph.edu.sv
+ORELLANA, RAFAEL	raffaorellana@colegioioseph.edu.sv
+ORELLANA ALVARENGA, SILVANA CELESTE	orellanasilvana@colegioioseph.edu.sv
+ORTIZ CABRERA, DANIELA FERNANDA	ortizfernanda@colegioioseph.edu.sv
+ORTIZ ELAS, JORGE LUIS	ortizluis@colegioioseph.edu.sv
+PACHECO MENDOZA, MARIA BELEN	pachecomaria@colegioioseph.edu.sv
+PADILLA HERNANDEZ, DIEGO ALEXANDER	padilladiego@colegioioseph.edu.sv
+PALACIOS CANALES, MELANIE SOPHIA	palaciossophia@colegioioseph.edu.sv
+PALACIOS ERAZO, JORGE ANTONIO	palaciosantonio@colegioioseph.edu.sv
+PARADA AYALA, JEFFERSON STEVEN	paradasteven@colegioioseph.edu.sv
+PAREDES PORTILLO, MELANIE NAOMI	paredesmelanie@colegioioseph.edu.sv
+PAZ RODRIGUEZ, DIEGO FERNANDO	pazdiego@colegioioseph.edu.sv
+PENA SANCHEZ, JONATHAN ANDRES	penajonathan@colegioioseph.edu.sv
+PEREZ, CRISTIAN LEVI	levi.perez.4
+PEREZ CASTELLANO, JOCELIN SOFIA	perezjocelin@colegioioseph.edu.sv
+PEREZ DELGADO, GABRIELA ABIGAIL	perezgabriela@colegioioseph.edu.sv
+PEREZ VELASQUEZ, TIFFANY STACY	pereztiffany@colegioioseph.edu.sv
+PERLA SALAZAR, ELENA FABIOLA	perlafabiola@colegioioseph.edu.sv
+PINEDA ESCOTO, DANIEL ALEXANDER	pinedadaniel@colegioioseph.edu.sv
+PINO MARTINEZ, TATIANA GISELLE	pinogiselle@colegioioseph.edu.sv
+PLATERO PRIVADO, GENESIS ALEJANDRA	platerogenesis@colegioioseph.edu.sv
+PLATERO PRIVADO, OSWALDO JESER	platerojeser@colegioioseph.edu.sv
+POLANCO RIVAS, IAN MARCELO	polancoian@colegioioseph.edu.sv
+PONCE, ANDREA MARIA	ponceandrea@colegioioseph.edu.sv
+PONCE DE PAZ, VALERIA NAHOMI	poncevaleria@colegioioseph.edu.sv
+PORTILLO ORELLANA, NAHOMY YAMILETH	portilloyamileth@colegioioseph.edu.sv
+PORTILLO VALLE, RODRIGO GABRIEL	portillogabriel@colegioioseph.edu.sv
+QUINTANILLA MELENDEZ, VICTOR HUGO	quintanillavictor@colegioioseph.edu.sv
+RAMIREZ CHAVEZ, JOSE DAVID	ramirezjose@colegioioseph.edu.sv
+RAMIREZ FUENTES, ESTEFANIA RONITH	ramirezronith@colegioioseph.edu.sv
+RAMIREZ GARCIA, MARCOS DAVID	ramirezmarcos@colegioioseph.edu.sv
+RAMIREZ MIRA, ALEJANDRO VLADIMIR	ramirezalejandro@colegioioseph.edu.sv
+RAMIREZ PADILLA, FERNANDA CAMILA	ramirezcamila@colegioioseph.edu.sv
+RAMÍREZ VÁSQUEZ, KRISSIA DANIELA	krisiiavasquez@colegioioseph.edu.sv
+RAMOS ESCAMILLA, ALEXANDRA ABIGAIL	escamillaabigail@colegioioseph.edu.sv
+RAMOS OLIVA, SUGEY BERENICE	ramosberenice@colegioioseph.edu.sv
+RECINOS ORELLANA, VALERIA ALEJANDRA	recinosvaleria@colegioioseph.edu.sv
+RECINOS RODRIGUEZ, CARLOS JOAQUIN	recinosjoaquin@colegioioseph.edu.sv
+RENDEROS AGUILLON, DANYELLE ITZEL	renderosdanyelle@colegioioseph.edu.sv
+REYES RAMIREZ, JAIME RAFAEL	jaimereyes@colegioioseph.edu.sv
+RIMER PACHECO, ALICIA DIANE	rimerdiane@colegioioseph.edu.sv
+RIVAS FERNANDEZ, OSCAR DANIEL	rivasoscar@colegioioseph.edu.sv
+RIVAS MUÑOZ, EDWIN SAMUEL	samuelrivas@colegioioseph.edu.sv
+RIVERA ACOSTA, GERARDO JOSE	riverajosegerardo@colegioioseph.edu.sv
+RIVERA ALFARO, KELVIN ROBERTO	riverakelvin@colegioioseph.edu.sv
+RIVERA HERNANDEZ, BRYANNA AYELEN	riverabryanna@colegioioseph.edu.sv
+RIVERA MARTINEZ, ANGELICA NICOLLE	riveranicolle@colegioioseph.edu.sv
+RIVERA OSORIO, RICARDO JOSE	riverajose@colegioioseph.edu.sv
+RIVERA RODRIGUEZ, ISABELA RACHEL	riverarachel@colegioioseph.edu.sv
+RODAS PEREZ, ALEXANDRA MICHEL	rodasalexandra@colegioioseph.edu.sv
+RODRIGUEZ CUBIAS, GISELLE ALEJANDRA	rodriguezgiselle@colegioioseph.edu.sv
+RODRIGUEZ ESCALANTE, JOSHUA GABRIEL	rodriguezgabriel@colegioioseph.edu.sv
+RODRIGUEZ GUEVARA, GRECIA SOFIA	rodriguezgrecia@colegioioseph.edu.sv
+RODRIGUEZ GUEVARA, HENRY ALESSANDRO	rodriguezhenry@colegioioseph.edu.sv
+RODRIGUEZ MONTIEL, MARIA ELIZABETH	rodriguezmaria@colegioioseph.edu.sv
+RODRÍGUEZ ORELLANA, LUIS EDUARDO	luis.rodriguez@colegioioseph.edu.sv
+RODRIGUEZ RIVAS, LESLIE NICOLLE	rodriguezleslie@colegioioseph.edu.sv
+RODRIGUEZ SANCHEZ, IVANIA ALEXA	rodriguezivania@colegioioseph.edu.sv
+RODRIGUEZ SEGURA, CHRISTIAN SANTIAGO	rodriguezchristian@colegioioseph.edu.sv
+ROJAS MARMOL, YOLANDA CECILIA	rojasyolanda@colegioioseph.edu.sv
+ROMERO SARAVIA, MARIA CAMILA	romeromaria@colegioioseph.edu.sv
+SALAS BONIFACIO, GABRIELA ALEJANDRA	salasalejandra@colegioioseph.edu.sv
+SALAZAR GONZALEZ, ANDRES MATIAS	salazarmatias@colegioioseph.edu.sv
+SALINAS LOPEZ, ALISSON ABIGAIL	salinasalisson@colegioioseph.edu.sv
+SANCHEZ CAMPOS, ERICK DAVID	sanchezerick@colegioioseph.edu.sv
+SANCHEZ ROJAS, DEYSI DAYANA	sanchezdeysi@colegioioseph.edu.sv
+SANDOVAL BAIRES, JEIMY ALEXANDRA	sandovaljeimy@colegioioseph.edu.sv
+SANTILLANA, ADMINISTRADOR	2500admin
+SANTILLANA, COACH	SV.IOSEPH-CH
+SEGOVIA JACOBO, EMELY RUBI	segoviarubi@colegioioseph.edu.sv
+SERRANO LOPEZ, LUIS FERNANDO	serranoluis@colegioioseph.edu.sv
+SIBRIAN FUENTES, SERGIO SEBASTIAN	sibriansebastian@colegioioseph.edu.sv
+SIERRA HERNANDEZ, NELSON ALBERTO	sierranelson@colegioioseph.edu.sv
+SIGUENZA MENDEZ, MATEO ENRIQUE	siguenzamateo@colegioioseph.edu.sv
+SIGUI AZUCAR, FERNANDA CAMILA	siguifernanda@colegioioseph.edu.sv
+SILIEZAR LOPEZ, DAYANA CAMILA	siliezardayana@colegioioseph.edu.sv
+SOLIS ORDOÑEZ, JUSTIN STANLEY	ordonezjustin@colegioioseph.edu.sv
+SOLORZANO TOMASINO, GENESIS VANESSA	solorzanogenesis@colegioioseph.edu.sv
+TOLENTINO VASQUEZ, GRECIA ALEXANDRA	tolentinogrecia@colegioioseph.edu.sv
+TORRES VENTURA, KEIRY OLINDA	torreskeiry@colegioioseph.edu.sv
+TORRES VENTURA, ZARA LINDA	torreszara@colegioioseph.edu.sv
+TREMINIO AVILES, CAMILA FERNANDA	treminiocamila@colegioioseph.edu.sv
+TURCIOS PEÑATE, VANESSA ELIZABETH	turciosvanessa@colegioioseph.edu.sv
+URQUILLA TREMINIO, ALEJANDRO GABRIEL	urquillagabriel@colegioioseph.edu.sv
+VALDEZ RAMOS, ELMER ANTONY	valdezelmer@colegioioseph.edu.sv
+VALLE BELTRAN, JONATHAN FABRIZIO	vallejonathan@colegioioseph.edu.sv
+VALLE MOLINA, MADELINE MIREYA	vallemadeline@colegioioseph.edu.sv
+VARGAS FLORES, RODRIGO ALEJANDRO	vargasalejandro@colegioioseph.edu.sv
+VASQUEZ AVALOS, MATIAS URIEL	vasquezuriel@colegioioseph.edu.sv
+VELASCO DIMAS, EDWIN ALEXANDER	velascoedwin@colegioioseph.edu.sv
+VELASQUEZ CANO, FERNANDA CAMILA	velasquezcamila@colegioioseph.edu.sv
+VENTURA SOSA, MOISES ALEXANDER	venturamoises@colegioioseph.edu.sv
+VIDES GUZMAN, RICARDO DANIEL	videsricardo@colegioioseph.edu.sv
+WEIL DUEÑAS, SOFIA ANELISSE	weilsofia@colegioioseph.edu.sv
+ZAÑA URRUTIA, ANDREA MELISA	zanaandrea@colegioioseph.edu.sv
+ZAÑA URRUTIA, LEONARDO JOSÉ	zanaleonardo@colegioioseph.edu.sv
+ZEPEDA TORRES, ARIEL EMANUEL	zepedaariel@colegioioseph.edu.sv
+ZEPEDA FLORES, CARLOS ALBERTO	carlosalberto.zepedaflores
+ZEPEDA FLORES, CARLOS ALBERTO	carlosalberto.zepedaflores
+ZIMMERMANN SOLIS, JACOB BENJAMIN	zimmermannbenjamin@colegioioseph.edu.sv
+
+`.trim()
+      .split("\n")
+      .map(linea => {
+        const [nombre, correo] = linea.split("\t");
+        return { nombre, correo };
+      });
+
+    // Cargar todos los nombres en el select inicialmente
+    document.addEventListener("DOMContentLoaded", () => {
+      cargarNombres(datos);
+    });
+
+    // Función para cargar nombres en el select
+    function cargarNombres(nombres) {
+      const nombreSelect = document.getElementById("nombreSelect");
+      nombreSelect.innerHTML = ""; // Limpiar opciones previas
+      nombres.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.correo; // Guardar el correo como valor
+        option.textContent = item.nombre; // Mostrar el nombre
+        nombreSelect.appendChild(option);
+      });
+    }
+
+    // Mostrar correo al seleccionar un nombre
+    function mostrarCorreo() {
+      const nombreSelect = document.getElementById("nombreSelect");
+      const correoInput = document.getElementById("correoInput");
+
+      // Obtener el valor seleccionado
+      const correoSeleccionado = nombreSelect.value;
+
+      // Mostrar el correo en el campo de texto
+      correoInput.value = correoSeleccionado;
+    }
+  </script>
+
+</body>
+</html>
